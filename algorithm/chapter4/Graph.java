@@ -67,7 +67,7 @@ public class Graph{
 			dfs(G, s);
 		}
 		public dfs(Graph G, int s){
-			marked[s] = True;
+			marked[s] = true;
 			for(int w: G.adj(s))
 				if(!marked[w]){
 					edgeTo[w] = s;
@@ -85,4 +85,60 @@ public class Graph{
 			path.push(s);
 			return path;
 		}
+	}
+
+	public class breathFirstSearch{
+		private boolean[] marked;
+		private int[] edgeTo;
+		private final int s;
+		public breathFirstSearch(Graph G, int s){
+			this.s = s;
+			edgeTo = new int[G.V()];
+			marked = new boolean[G.V()];
+			dfs(G, s);
+		}
+		public bfs(Graph G, int s){
+			Queue queue = new Queue<Integer>();
+			queue.enqueue(s);
+			marked[s] = true;
+			while(!queue.isEmpty()){
+				int target = queue.dequeue();
+				for(int w: G.adj(target)){
+					if(!marked[w]){
+						marked[target] = true
+						q.enqueue(w);
+						edgeTo[w] = target;
+					}
+				}
+			}
+		}
+	}
+	public class CC{
+		private boolean marked[];
+		private int[] id;
+		private int count;
+		public CC(Graph G){
+			id = new int[G.V()];
+			marked = new boolean[G.V()];
+			for(int i = 0; i < G.V(); i++)
+				if(!marked[i]){
+					dfs(G, i);
+					count++;
+				}
+		}
+		public int count(){
+			return count;
+		}
+		public int id(int v){
+			return id[v];
+		}
+		private void dfs(Graph G, int v){
+			marked[v] = true;
+			id[v] = this.count;
+			for(int w : G.adj(v))
+				if(!marked[w])
+					dfs(G, w);
+		}
+	}
+//twocolor && cycle problem is simple. Pass.
 }
