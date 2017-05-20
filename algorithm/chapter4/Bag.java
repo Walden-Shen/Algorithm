@@ -14,7 +14,7 @@ public class Bag<Item> implements Iterable{
 	public Iterator<Item> iterator(){
 		return new ListIterator();
 	}
-	private class ListIterator implements Iterator<Item>{
+	private class ListIterator implements Iterator<Item>, Iterable{
 		private Node current = first;
 		public boolean hasNext(){
 			return current != null;
