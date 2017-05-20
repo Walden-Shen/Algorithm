@@ -1,5 +1,5 @@
 import java.util.Iterator;
-public class Bag<Item>{
+public class Bag<Item> implements Iterable{
 	private Node first;
 	private class Node{
 		Item item;

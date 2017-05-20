@@ -1,7 +1,8 @@
+import java.util.*;
 public class Graph{
 	private final int V;
 	private int E;
-	private Bag<Integer> adj;
+	private Bag<Integer>[] adj;
 
 	public Graph(int V){
 		this.V = V;
@@ -39,8 +40,8 @@ public class Graph{
 	public static int maxDegree(Graph G){
 		int max = 0;
 		for(int v = 0; v < G.V(); v++)
-			if(degree(G, V) > max)
-				max = degree(G, V);
+			if(degree(G, v) > max)
+				max = degree(G, v);
 		return max;
 	}
 	
@@ -66,7 +67,7 @@ public class Graph{
 			marked = new boolean[G.V()];
 			dfs(G, s);
 		}
-		public dfs(Graph G, int s){
+		public void dfs(Graph G, int s){
 			marked[s] = true;
 			for(int w: G.adj(s))
 				if(!marked[w]){
@@ -80,7 +81,7 @@ public class Graph{
 		public Iterable<Integer> pathTo(int v){
 			if(!hasPathTo(v)) return null;
 			Stack<Integer> path = new Stack<Integer>();
-			for(; v != this.s; v = pathTo[v])
+			for(; v != this.s; v = edgeTo[v])
 				path.push(v);
 			path.push(s);
 			return path;
@@ -95,18 +96,18 @@ public class Graph{
 			this.s = s;
 			edgeTo = new int[G.V()];
 			marked = new boolean[G.V()];
-			dfs(G, s);
+			bfs(G, s);
 		}
-		public bfs(Graph G, int s){
-			Queue queue = new Queue<Integer>();
-			queue.enqueue(s);
+		public void bfs(Graph G, int s){
+			LinkedList queue = new LinkedList<Integer>();
+			queue.offer(s);
 			marked[s] = true;
 			while(!queue.isEmpty()){
-				int target = queue.dequeue();
+				int target = (Integer)queue.poll();
 				for(int w: G.adj(target)){
 					if(!marked[w]){
-						marked[target] = true
-						q.enqueue(w);
+						marked[target] = true;
+						queue.offer(w);
 						edgeTo[w] = target;
 					}
 				}
