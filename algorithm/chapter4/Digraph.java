@@ -1,17 +1,40 @@
-public class Bigraph extends Graph{
+public class Digraph{
+	private final int V;
+	private int E;
+	private Bag<Integer>[] adj;
+
+	public Digraph(int V){
+		this.V = V;
+		this.E = 0;
+		adj = (Bag<Integer>[]) new Bag[V];
+		for(int v = 0; v < V; v++){
+			adj[v] = new Bag<Integer>();
+		}
+	}
+
+	public int V(){
+		return this.V;
+	}
+	public int E(){
+		return this.E;
+	}
+
+	public Iterable<Integer> adj(int v){
+		return adj[v];
+	}
 	public void addEdge(int v, int w){
-		adj(v).add(w);
+		adj[v].add(w);
 		this.E++;
 	}
 
-	public Bigraph reverse(){
-		Bigraph bigraph = new Bigraph(this.V());
+	public Digraph reverse(){
+		Digraph digraph = new Digraph(this.V());
 		for(int i = 0; i < this.V(); i++)
-			for(int j : this.adj(i).iterator())
-				bigraph.addEdge(this.adj(i)[j], i);
-		return bigraph;
+			for(int j : this.adj(i))
+				digraph.addEdge(j, i);
+		return digraph;
 	}
-	
+/**	
 	public class KosarajuSharirSCC{
 		private boolean marked[];
 		private int[] id;
@@ -38,4 +61,5 @@ public class Bigraph extends Graph{
 			return id[v] == id[w];
 		}
 	}
+	*/
 }

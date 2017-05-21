@@ -1,5 +1,5 @@
 import java.util.Iterator;
-public class Bag<Item> implements Iterable{
+public class Bag<Item> implements Iterable<Item>{
 	private Node first;
 	private class Node{
 		Item item;
@@ -14,7 +14,7 @@ public class Bag<Item> implements Iterable{
 	public Iterator<Item> iterator(){
 		return new ListIterator();
 	}
-	private class ListIterator implements Iterator<Item>, Iterable{
+	private class ListIterator implements Iterator<Item>{
 		private Node current = first;
 		public boolean hasNext(){
 			return current != null;
