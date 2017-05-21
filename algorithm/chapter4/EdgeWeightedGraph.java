@@ -32,7 +32,7 @@ public class EdgeWeightedGraph{
 		Bag<Edge> b = new Bag<>();
 		for(int i = 0; i < this.V; i++)
 			for(Edge e : adj[i])
-				if (e.other(v) > v) b.add(e);
+				if (e.other(e) > e) b.add(e);
 		return b;
 	}
 }

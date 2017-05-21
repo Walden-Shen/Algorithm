@@ -10,15 +10,16 @@ public class KruscalMST{
 			Edge e = pq.delMin();
 			int v = e.either();
 			int w = e.other(v);
-			if(!uf.isConnected(v, w){
+			if(!uf.isConnected(v, w)){
 				uf.union(v, w);
 				mst.offer(e);
 			}
 		}
 	}
-	public Iterable<Edge> edges{
+	public Iterable<Edge> edges(){
 		return mst;
 	}
 	public double weight()
+}
 
 

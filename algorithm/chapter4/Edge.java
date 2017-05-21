@@ -9,13 +9,13 @@ public class Edge{
 		this.weight = weight;
 	}
 	
-	private double weight(){
+	public double weight(){
 		return this.weight;
 	}
-	private int either(){
+	public int either(){
 		return this.v;
 	}
-	private int other(int v){
+	public int other(int v){
 		if(v == this.v)
 			return w;
 		else if(v == this.w)
@@ -23,7 +23,7 @@ public class Edge{
 		else
 			throw new RuntimeException("inconsistent edge");
 	}
-	private int compareTo(Edge that){
+	public int compareTo(Edge that){
 		if(this.weight() > that.weight())
 			return 1;
 		else if(this.weight() < that.weight())
