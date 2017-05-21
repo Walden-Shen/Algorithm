@@ -34,7 +34,7 @@ public class Digraph{
 				digraph.addEdge(j, i);
 		return digraph;
 	}
-/**	
+	
 	public class KosarajuSharirSCC{
 		private boolean marked[];
 		private int[] id;
@@ -61,5 +61,4 @@ public class Digraph{
 			return id[v] == id[w];
 		}
 	}
-	*/
 }
