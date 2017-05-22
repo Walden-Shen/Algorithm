@@ -3,7 +3,7 @@ public class TopologicalSort{
 	public TopologicalSort(Digraph G){
 		DirectedCycle dc = new DirectedCycle(G);
 		if(!dc.hasCycle()){
-			DepthFirstSearch dfs = new DepthFirstSearch(G);
+			DepthFirstOrder dfs = new DepthFirstOrder(G);
 			order = dfs.reversePost();
 		}
 	}

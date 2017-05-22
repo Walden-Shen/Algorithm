@@ -36,11 +36,11 @@ public class DirectedCycle{
 		inStack[v] = false;
 	}
 
-	private boolean hasCycle(){
+	public boolean hasCycle(){
 		return this.stack != null;
 	}
 
-	private Iterable<Integer> cycle(){
+	public Iterable<Integer> cycle(){
 		return stack;
 	}
 }
