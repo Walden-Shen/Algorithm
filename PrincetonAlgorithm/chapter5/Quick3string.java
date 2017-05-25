@@ -3,6 +3,11 @@ public class Quick3string{
 		if(d < s.length()) return s.charAt(d);
 		return -1;
 	}
+	private static void exch(String[] a, int i, int j){
+		String temp = a[i];
+		a[i] = a[j];
+		a[j] = a[i];
+	}
 	private static void sort(String[] a){
 		sort(a, 0, a.length - 1, 0);
 	}
@@ -18,7 +23,7 @@ public class Quick3string{
 			else	i++;
 		}
 		sort(a, lo, lt - 1, d);
-		if(v > = 0) sort(a, lt, gt, d + 1);
+		if(v >= 0) sort(a, lt, gt, d + 1);
 		sort(a ,gt + 1, hi, d);
 	}
 }
