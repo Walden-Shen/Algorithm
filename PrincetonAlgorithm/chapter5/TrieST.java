@@ -1,3 +1,4 @@
+import java.util.*;
 public class TrieST<Value>{
 	private static class Node{
 		private Object value;
@@ -49,4 +50,33 @@ public class TrieST<Value>{
 		}
 		return false;
 	}
+	public Iterable<String> keys(){
+		LinkedList<String> queue = new LinkedList<>();
+		collect(root, "", queue);
+		return queue;
+	}
+	private void collect(Node node, String prefix, LinkedList<String> queue){
+		if(node == null) return;
+		if(node.value != null) queue.offer(prefix);
+		for(char c = 0; c < R; c++)
+			collect(node.next[c], prefix + c, queue);
+	}
+	public Iterable<String> keyWithPrefix(String prefix){
+		LinkedList<String> queue = new LinkedList<>();
+		Node x = get(root, prefix, 0);
+		collect(x, prefix, queue);
+		return queue;
+	}
+	public String longestPrefixOf(String query){
+		int length = search(root, query, 0, 0);
+		return query.substring(0, length);
+	}
+	private int search(Node x, String query, int d, int length){
+		if(x == null) return length;
+		if(x.value != null) length = d;
+		if(d == query.length()) return length;
+		char c = query.charAt(d);
+		return search(x.next[c], query, d + 1, length);
+	}
 }
+
